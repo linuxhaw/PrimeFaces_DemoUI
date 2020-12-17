@@ -24,6 +24,14 @@
 		<ui:include src="/templates/menubar.xhtml"></ui:include>
 		</ui:insert>
 	</div>
+	
+	<div id="main_contents">
+		<div id="contents">
+			<ui:insert name="content">
+				<ui:include src="/templates/content.xhtml"></ui:include>
+			</ui:insert>
+		</div>
+	</div>
 
 <ui:insert name = "footer" > <ui:include src = "/templates/footer.xhtml" /> </ui:insert>	
 
