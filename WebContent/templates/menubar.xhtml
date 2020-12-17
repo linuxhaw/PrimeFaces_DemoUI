@@ -14,16 +14,16 @@ xmlns:p="http://primefaces.org/ui">
 
     <p:menu toggleable="true" style="backgroud-color:red;width:1500%;height:500px;">
         <p:submenu label="Class Management" style="background-color:limegreen; border-radius:5px 5px 5px 5px;" >
-            <p:menuitem style="background-color:lightgrey; border-radius:5px 5px 5px 5px;" value="Add Class" action="#{menuView.save}"  icon="pi pi-save" />
-            <p:menuitem style="background-color:lightgrey; border-radius:5px 5px 5px 5px;"  value="Search Class" action="#{menuView.update}"  icon="pi pi-refresh"/>
+            <p:menuitem style="background-color:skyblue; border-radius:5px 5px 5px 5px;" value="Add Class" action="#{menuView.save}"  icon="pi pi-save" />
+            <p:menuitem style="background-color:skyblue; border-radius:5px 5px 5px 5px;"  value="Search Class" action="#{menuView.update}"  icon="pi pi-refresh"/>
         </p:submenu>
-        <p:submenu label="Student Management">
-            <p:menuitem value="Add Student" action="#{menuView.delete}" ajax="false" icon="pi pi-times"/>
-            <p:menuitem value="Search Student" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+        <p:submenu label="Student Management" style="background-color:limegreen; border-radius:5px 5px 5px 5px;">
+            <p:menuitem style="background-color:skyblue; border-radius:5px 5px 5px 5px;" value="Add Student" action="#{menuView.delete}" ajax="false" icon="pi pi-times"/>
+            <p:menuitem style="background-color:skyblue; border-radius:5px 5px 5px 5px;" value="Search Student" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
         </p:submenu>
-        <p:submenu label="User Management">
-            <p:menuitem value="Add User" url="http://www.primefaces.org" icon="pi pi-home"/>
-            <p:menuitem value="Search User" url="http://www.primefaces.org" icon="pi pi-home"/>
+        <p:submenu label="User Management" style="background-color:limegreen; border-radius:5px 5px 5px 5px;">
+            <p:menuitem style="background-color:skyblue; border-radius:5px 5px 5px 5px;" value="Add User" url="http://www.primefaces.org" icon="pi pi-home"/>
+            <p:menuitem style="background-color:skyblue; border-radius:5px 5px 5px 5px;" value="Search User" url="http://www.primefaces.org" icon="pi pi-home"/>
         </p:submenu>
      </p:menu>
 </h:form>

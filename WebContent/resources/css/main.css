@@ -92,3 +92,22 @@ body{
 	left: 220px;
 }
 
+#login_table{
+	 margin-left :25% ;
+	 text-align: center;
+	 border: 1px solid skyblue;
+	 border-width: 3px;
+	 padding: 30px;
+	 padding-bottom: 80px;
+	 padding-top: 30px;
+	 line-height: 40px;
+	 width:35%;
+	 text-shadow: gray;
+	 background-color: skyblue;
+}
+
+#btn{
+	width:20px;
+	heigh:7px;
+}
+
