@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>  
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml"  
+xmlns:h="http://xmlns.jcp.org/jsf/html"  
+xmlns:p="http://primefaces.org/ui">  
+<h:head>  
+<title>Ajax Basic Example</title>  
+	
+
+</h:head>  
+<h:body>  
+<h:form style="padding-top:85px ;width:18px;">	
+
+    <p:menu toggleable="true" style="backgroud-color:red;width:1500%;height:500px;">
+        <p:submenu label="Class Management" style="background-color:limegreen; border-radius:5px 5px 5px 5px;" >
+            <p:menuitem style="background-color:lightgrey; border-radius:5px 5px 5px 5px;" value="Add Class" action="#{menuView.save}"  icon="pi pi-save" />
+            <p:menuitem style="background-color:lightgrey; border-radius:5px 5px 5px 5px;"  value="Search Class" action="#{menuView.update}"  icon="pi pi-refresh"/>
+        </p:submenu>
+        <p:submenu label="Student Management">
+            <p:menuitem value="Add Student" action="#{menuView.delete}" ajax="false" icon="pi pi-times"/>
+            <p:menuitem value="Search Student" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+        </p:submenu>
+        <p:submenu label="User Management">
+            <p:menuitem value="Add User" url="http://www.primefaces.org" icon="pi pi-home"/>
+            <p:menuitem value="Search User" url="http://www.primefaces.org" icon="pi pi-home"/>
+        </p:submenu>
+     </p:menu>
+</h:form>
+</h:body>  
+</html>  
+
