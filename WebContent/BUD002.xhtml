@@ -6,73 +6,66 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
-</head>
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Insert title here</title>
+</h:head>
 <h:body>
 	<ui:composition template="templates/template.xhtml">
 		<ui:define name="content">
 
 			<h:form>
+
+				<p:messages id="messages" showDetail="true" closable="true">
+					<p:autoUpdate />
+				</p:messages>
 				<div>
 					<h3>Student Register</h3>
-					<label id="errormsg">  </label> <label style="color: blue;"></label>
-					<br />
-					<br />
-					<br />
 					<form action="StudentRegisterServlet" method="post">
 						<table class="tableForm">
 							<tr>
 								<td class="tblSingleLabel">Student No *</td>
-								<td class="tblSingleInput">
-									<p:inputText />
-								</td>
+								<td class="tblSingleInput"><p:inputText /></td>
 							</tr>
-							
+
 							<tr>
 								<td class="tblSingleLabel">Student Name *</td>
-								<td class="tblSingleInput">
-									<p:inputText />
-								</td>
+								<td class="tblSingleInput"><p:inputText /></td>
 							</tr>
-							
+
 							<tr>
 								<td class="tblSingleLabel">Class Name *</td>
-								<td class="tblSingleInput">
-									<p:selectOneMenu id="country" value="#{dropdownView.country}" style="width:150px">
-										
-									</p:selectOneMenu>
-								</td>
+								<td class="tblSingleInput"><p:selectOneMenu id="country"
+										value="#{dropdownView.country}" style="width:150px">
+
+									</p:selectOneMenu></td>
 							</tr>
-							
+
 							<tr>
 								<td class="tblSingleLabel">Registered Date *</td>
-								<td class="tblSingleInput">
-									<p:selectOneMenu id="year" value="#{dropdownView.year}" style="width:90px">
-										
-									</p:selectOneMenu>
-									
-									<p:selectOneMenu id="month" value="#{dropdownView.month}" style="width:50px">
-										
-									</p:selectOneMenu>
-									<p:selectOneMenu id="day" value="#{dropdownView.day}" style="width:50px">
-										
-									</p:selectOneMenu>
-									
-								</td>
+								<td class="tblSingleInput"><p:selectOneMenu id="year"
+										value="#{dropdownView.year}" style="width:90px">
+
+									</p:selectOneMenu> <p:selectOneMenu id="month" value="#{dropdownView.month}"
+										style="width:50px">
+
+									</p:selectOneMenu> <p:selectOneMenu id="day" value="#{dropdownView.day}"
+										style="width:50px">
+
+									</p:selectOneMenu></td>
 							</tr>
 							<tr>
 								<td class="tblSingleLabel">Status *</td>
-								<td class="tblSingleInput">
-									<p:selectOneMenu id="status" value="#{dropdownView.status}" style="width:100px">
-										
-									</p:selectOneMenu>
-								</td>
+								<td class="tblSingleInput"><p:selectOneMenu id="status"
+										value="#{dropdownView.status}" style="width:100px">
+
+									</p:selectOneMenu></td>
 							</tr>
 						</table>
-						<br/>
-						<p:commandButton value="Register" id="ajax" action="#{buttonView.buttonAction}" style="margin-right:20px;" styleClass="ui-priority-primary" />
+						<br />
+						<p:commandButton value="Register" id="ajax"
+							action="#{buttonView.buttonAction}" style="margin-right:20px;"
+							styleClass="ui-priority-primary" />
 					</form>
 				</div>
 			</h:form>
