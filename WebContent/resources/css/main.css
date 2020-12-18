@@ -82,7 +82,7 @@ body{
 #contents{
     padding:10px;
 	margin-left: 20px;
-	padding-left:100px;
+	padding-left:10px;
 	overflow: auto;
 	position:absolute;
 	width: 1100px;
@@ -184,7 +184,7 @@ body{
 	background: linear-gradient(to top ,#185a9d ,#43cea2  ) ;
 	float:left;
 	padding-top:15px;
-	width:24%;
+	width:300px;
 	min-height:1000px;
 	height:100%;
 	
@@ -202,7 +202,7 @@ body{
 #contents{
     padding:10px;
 	margin-left: 20px;
-	padding-left:10px;
+	padding-left:100px;
 	overflow: auto;
 	position:absolute;
 	width: 1100px;
