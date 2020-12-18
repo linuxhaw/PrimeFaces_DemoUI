@@ -54,6 +54,24 @@ public class ClassDAO {
 		}
 		return list;
 	}
+	
+	public List<ClassDTO> selectAll() {
+		List<ClassDTO> list = new ArrayList<ClassDTO>();
+		try {
+			PreparedStatement ps = con.prepareStatement("select * from class");
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				ClassDTO res = new ClassDTO();
+				res.setId(rs.getString("id"));
+				res.setName(rs.getString("name"));
+				list.add(res);
+			}
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 	public ClassDTO selectOne(String id) {
 		try {

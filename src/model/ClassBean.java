@@ -8,6 +8,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
+
 import dto.ClassDTO;
 
 import dao.ClassDAO;
@@ -53,6 +54,8 @@ public class ClassBean {
 			if (res > 0) {
 				request.setAttribute("msg", "Register Successfull!");
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Successfully added"));
+				List<ClassDTO> list1 = dao.selectAll();
+				request.getSession().setAttribute("classlist", list1);
 				return "classRegistion.xhtml?faces-redirect=true";
 			}
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Input Error"));

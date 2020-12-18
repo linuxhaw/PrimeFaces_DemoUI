@@ -8,42 +8,41 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Insert title here</title>
 </h:head>
 <h:body>
 	<ui:composition template="templates/template.xhtml">
 		<ui:define name="content">
-			<div class="search_form">
+		
+			<!-- <div class="search_form">
 				<h3>Student Search Page</h3>
 				<h:form id="form" class="form-horizontal">
 					<table class="tableForm">
 						<tr>
 							<td class="tblLabel">Student No.</td>
 							<td class="tblInputShort">
-								<h:inputText id="code" value=""	class="form-control" validatorMessage="Book Code is required">
-									<f:validateRequired />
-					<h:message for="code"></h:message>
-								</h:inputText>
+								<p:inputText id="#{studentBean.id}" />
 							</td>
 							<td class="tblLabel">Student Name</td>
-							<td class="tblInputShort"><input type="text" class="txt" th:field="*{studentName}" /></td>
-							<h:inputText id="code" value="#{book.bookCode}"	class="form-control" validatorMessage="Book Code is required">
-
-					<f:validateRequired />
-					<h:message for="code"></h:message>
-				</h:inputText>
-						<tr />
+							<td class="tblInputShort">
+								<p:inputText id="#{studentBean.name}" />
+							</td>
+						</tr>
 						<tr>
 							<td class="tblLabel">Class Name</td>
-							<td class="tblInputNormal" colspan="3"><input type="text" class="txt" th:field="*{className}" /></td>
+							<td class="tblInputNormal" colspan="3">
+								<p:inputText id="#{studentBean.className}" />
+							</td>
 						</tr>
 					</table>
+					<p:commandButton value="Search" action="#{studentBean.search()}"
+							update="display" icon="ui-icon-check" />
 				</h:form>
 			</div>
 			<h:form>
 
-			</h:form>
+			</h:form> -->
 
 		</ui:define>
 
