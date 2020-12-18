@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @charset "UTF-8";
 
 body{
@@ -117,3 +118,113 @@ table.tableForm{
     width:50%;
     align:left;
 }
+=======
+@charset "UTF-8";
+
+body{
+	margin:0px;
+	font-family:sans-serif;
+	font-size:11pt;
+	float:left;
+	text-align:justify;
+    margin-left: auto;
+    margin-right:auto;
+    width: 1366px;
+    height: 100%;
+    overflow:hidden;
+}
+#header{
+	font-family:"Title Wave";
+	background:repeat-x;
+	background: linear-gradient(to right ,#185a9d ,#43cea2  ) ;
+	width: 100%;
+	height:90px;
+	font-size:13px;
+	top:0;
+	padding-left:35px;
+	padding-top:10px;
+	position:absolute; 
+	color:#eeeeec;
+	float: none;
+}
+
+#header a{
+	float: none;
+}
+
+#date_time {
+	text-align: center;
+	margin-top: -60px;
+	
+}
+
+#user_profile {
+	text-align: right;
+	margin-left:80%;
+	font-size: 18px;
+	margin-top: -30px;
+}
+
+#footer{
+	font-family:"Title Wave";
+	background: linear-gradient(to right ,#185a9d ,#43cea2,#185a9d) ;
+	width:100%;
+	height:40px;
+	font-size:15px;
+	color:#000000;
+	position:absolute; 
+	padding:15px;
+	text-align: center;
+	bottom:0;
+	}
+
+
+#left_menu{
+
+	background: linear-gradient(to top ,#185a9d ,#43cea2  ) ;
+	float:left;
+	padding-top:15px;
+	width:24%;
+	min-height:1000px;
+	height:100%;
+	
+}
+
+#main_contents{
+	background: white;
+	overflow: hidden;
+	min-height:1000px;
+	height:auto !important;
+	/*height:550px;*/
+	padding-top:15px;
+}
+
+#contents{
+    padding:10px;
+	margin-left: 20px;
+	padding-left:10px;
+	overflow: auto;
+	position:absolute;
+	width: 1100px;
+	top: 90px;
+	bottom: 20px;
+	*width: 600px;
+	*padding-left: 1px;
+	left: 220px;
+}
+
+#login_table{
+	 margin-left :25% ;
+	 text-align: center;
+	 border: 1px solid skyblue;
+	 border-width: 3px;
+	 padding: 30px;
+	 padding-bottom: 80px;
+	 padding-top: 30px;
+	 line-height: 50px;
+	 text-shadow: gray;
+	 background-color: skyblue;
+}
+
+
+>>>>>>> branch 'master' of https://github.com/linuxhaw/PrimeFaces_DemoUI.git

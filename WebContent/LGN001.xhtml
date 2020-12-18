@@ -18,10 +18,10 @@
 	<ui:composition template="/templates/welcomeTemplate.xhtml">
 		<ui:define name="content">
 
-			<h:form style="padding-top:10%;">
+			<h:form style="padding-top:8%;">
 				<table id="login_table">
 					<tr>
-						<th colspan="2">Log In Form</th>
+						<th colspan="2"><h2>Log In Form</h2></th>
 					</tr>
 					
 					<tr>
@@ -44,8 +44,9 @@
 					</tr>
 
 					<tr>
-						<td ><p:growl id="growl" life="2000" /> 
-						<p:commandButton	value="Login" id="ajax" update="growl" action="#{buttonView.buttonAction}" styleClass="ui-priority-primary" /></td>
+						<td colspan="2" style="padding-top:50px;"><p:growl id="growl" life="2000" /> 
+						<p:commandButton style="width:200px;"	value="Login" id="ajax" update="growl" action="#{buttonView.buttonAction}" styleClass="ui-priority-primary" />
+						</td>
 					</tr>
 
 				</table>
