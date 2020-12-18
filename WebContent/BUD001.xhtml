@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1 -
+/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Insert title here</title>
+</head>
+<h:body>
+	<ui:composition template="templates/template.xhtml">
+		<ui:define name="content">
+			<div class="search_form">
+				<h3>Student Search Page</h3>
+				<h:form id="form" class="form-horizontal">
+					<table class="tableForm">
+						<tr>
+							<td class="tblLabel">Student No.</td>
+							<td class="tblInputShort">
+								<h:inputText id="code" value=""	class="form-control" validatorMessage="Book Code is required">
+									<f:validateRequired />
+					<h:message for="code"></h:message>
+								</h:inputText>
+							</td>
+							<td class="tblLabel">Student Name</td>
+							<td class="tblInputShort"><input type="text" class="txt" th:field="*{studentName}" /></td>
+							<h:inputText id="code" value="#{book.bookCode}"	class="form-control" validatorMessage="Book Code is required">
+
+					<f:validateRequired />
+					<h:message for="code"></h:message>
+				</h:inputText>
+						<tr />
+						<tr>
+							<td class="tblLabel">Class Name</td>
+							<td class="tblInputNormal" colspan="3"><input type="text" class="txt" th:field="*{className}" /></td>
+						</tr>
+					</table>
+				</h:form>
+			</div>
+			<h:form>
+
+			</h:form>
+
+		</ui:define>
+
+	</ui:composition>
+</h:body>
+</html>
