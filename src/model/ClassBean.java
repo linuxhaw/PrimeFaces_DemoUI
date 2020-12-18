@@ -6,9 +6,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.servlet.http.HttpServletRequest;
 
-import dto.ClassDTO;
-
 import dao.ClassDAO;
+import dto.ClassDTO;
 
 @ManagedBean
 @RequestScoped

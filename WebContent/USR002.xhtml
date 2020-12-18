@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>(USR002)User Register</title>
+<h:outputStylesheet name="/css/base.css" />
+<h:outputStylesheet name="/css/container.css" />
+<h:outputStylesheet name="/css/main.css" />
+<h:outputStylesheet library="primefaces"
+	name="primeicons/primeicons.css" />
+<script type="text/javascript">
+	window.onload = function() {
+		menu();
+
+	}
+</script>
+</h:head>
+<h:body class="main_body">
+
+	<ui:composition template="templates/template.xhtml">
+
+		<ui:define name="content">
+			<div>
+				<h3>User Register</h3>
+				
+				<h:form>
+					<p:messages id="messages" showDetail="true" closable="true"> <p:autoUpdate /> </p:messages> 
+					<table class="tableForm">
+						<tr>
+							<td class="tblSingleLabel"><h:outputLabel for="id">User ID*</h:outputLabel></td>
+							<td class="tblSingleInput"><p:inputText id="id"	value="#{user.id}" label="User ID" required="true">
+							</p:inputText> <p:message for="id" style="color:red;"></p:message></td>
+						</tr>
+
+						<tr>
+							<td class="tblSingleLabel"><h:outputLabel for="name">User Name *</h:outputLabel></td>
+							<td class="tblSingleInput"><p:inputText id="name" value="#{user.name}" label="User Name" required="true"> 
+							</p:inputText> <p:message for="name" style="color:red;"></p:message></td>
+						</tr>
+
+						<tr>
+							<td class="tblSingleLabel"><h:outputLabel for="password">Password *</h:outputLabel></td>
+							<td class="tblSingleInput"><p:password id="password" feedback="false" value="#{user.password}" match="con" label="Password" required="true"/>
+							<p:message for="password" style="color:red;"></p:message></td>
+						</tr>
+
+						<tr>
+							<td class="tblSingleLabel"><h:outputLabel for="con">Confirm Password *</h:outputLabel></td>
+							<td class="tblSingleInput"><p:password id="con" feedback="false" value="#{user.confirm}" label="confirm password" required="true" />
+				            <p:message for="password" style="color:red;"></p:message></td>
+							</tr>
+
+
+					</table>
+					<br />
+					<h:commandButton value="Register" action="#{user.save()}" style="margin-right:20px; width:200px;" />
+				</h:form>
+			</div>
+		</ui:define>
+	</ui:composition>
+
+
+	
+	<!-- <div id="container">
+		<div id="left_menu">
+			 menu html code exist the menu function of general.js 
+		</div>
+		<div id="main_contents">
+			<div id="contents">
+				
+			</div>
+		</div>
+
+	</div>
+-->
+
+
+
+</h:body>
+</html>
