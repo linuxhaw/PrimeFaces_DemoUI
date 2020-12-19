@@ -6,29 +6,26 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
-</head>
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Insert title here</title>
+</h:head>
 <h:body>
 	<ui:composition template="templates/template.xhtml">
 		<div id="contents">
 			<ui:define name="content">
 				<h:form>
-					<p:messages id="msg" value="#{classBean.msg}" showDetail="true"
-						closable="true">
+
+					<p:messages id="messages" showDetail="true" closable="true">
 						<p:autoUpdate />
 					</p:messages>
-					<p:messages id="err" value="#{classBean.err}" showDetail="true"
-						closable="true">
-						<p:autoUpdate />
-					</p:messages>
+
+
 					<h3>Class Register</h3>
 					<h:panelGrid columns="2" cellpadding="5">
 
 						<h:outputLabel for="id" value="ClassID:" />
 						<p:inputText id="id" value="#{classBean.id}" />
-
 
 						<h:outputLabel for="name" value="ClassName:" />
 						<p:inputText id="name" value="#{classBean.name}" />
