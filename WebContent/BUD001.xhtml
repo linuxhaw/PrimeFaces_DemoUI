@@ -14,6 +14,9 @@
 <h:body>
 	<ui:composition template="templates/template.xhtml">
 		<ui:define name="content">
+			<p:messages id="messages" showDetail="true" closable="true">
+						<p:autoUpdate />
+			</p:messages>
 			<h3>Student Search Page</h3>
 			<div class="search_form">
 				<h:form>
@@ -39,14 +42,18 @@
 						<p:commandButton value="Search" action="#{studentBean.Select()}" update="display" icon="ui-icon-check" />
 						<h:outputText id="display" />
 				</h:form>
-				<p:dataTable var="student" value="#{studentBean.Select()}">
-				    
+				<p:dataTable var="student" value="#{studentBean.Select()}" rows="10">
+				    <!-- <p:column filterBy="#{car.id}" headerText="Id"  filterMatchMode="contains" id="clm">
+  						<h:outputText value="#{car.id}" />
+					</p:column> -->
 			        <p:column filterBy="#{student.id}" headerText="Id" filterMatchMode="contains">
 			            <h:outputText value="#{student.id}" />
 			        </p:column>
 			        
 			        <p:column filterBy="#{student.name}" headerText="Student Name" filterMatchMode="contains">
-			            <h:outputText value="#{student.name}" />
+			        	<p:commandLink action="#{studentBean.edit(student.id)}" style="margin-right:20px;">
+					        <h:outputText value="#{student.name}" />
+					    </p:commandLink>
 			        </p:column>
 				 	
 				 	<p:column filterBy="#{student.registerDate}" headerText="Register Date" filterMatchMode="contains">
