@@ -106,6 +106,7 @@ public class StudentBean {
 		
 		//FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Input Error"));
 		return "";
+		//
 	}
 	
 	
