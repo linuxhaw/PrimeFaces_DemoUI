@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -25,6 +26,8 @@ public class StudentBean {
 	private String status;
 	
 	private StudentDAO dao = new StudentDAO();
+	
+	private ClassDAO daoc = new ClassDAO();
 	
 
 	public String getId() {
@@ -67,6 +70,14 @@ public class StudentBean {
 		this.className = className;
 	}
 	
+	public List<ClassDTO> classlist(){
+		ClassDTO dto = new ClassDTO();
+		dto.setId("");
+		dto.setName("");
+		List<ClassDTO> list=daoc.select(dto);
+		return list;
+	}
+	
 	public String save() {
 		if (id==null) {
 			System.out.println(id);
@@ -95,6 +106,27 @@ public class StudentBean {
 		
 		//FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Input Error"));
 		return "";
+	}
+	
+	
+
+	/*
+	 * public List<Car> createCars(int size) { List<Car> list = new
+	 * ArrayList<Car>(); for(int i = 0 ; i < size ; i++) { list.add(new
+	 * Car(getRandomId(), getRandomBrand(), getRandomYear(), getRandomColor(),
+	 * getRandomPrice(), getRandomSoldState())); }
+	 * 
+	 * return list; }
+	 */
+	
+	public List<StudentBean> Select() {
+		List<StudentBean> list=dao.selectAll();
+		System.out.println(list.size());
+		//ClassDTO dto = new ClassDTO();
+		return list;
+		
+		
+		
 	}
 	
 }

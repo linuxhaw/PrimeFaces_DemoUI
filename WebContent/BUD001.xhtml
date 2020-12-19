@@ -6,7 +6,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>Insert title here</title>
@@ -14,36 +14,64 @@
 <h:body>
 	<ui:composition template="templates/template.xhtml">
 		<ui:define name="content">
-		
-			d<!-- <div class="search_form">
-				<h3>Student Search Page</h3>
-				<h:form id="form" class="form-horizontal">
+			<h3>Student Search Page</h3>
+			<div class="search_form">
+				<h:form>
 					<table class="tableForm">
-						<tr>
-							<td class="tblLabel">Student No.</td>
-							<td class="tblInputShort">
-								<p:inputText id="#{studentBean.id}" />
-							</td>
-							<td class="tblLabel">Student Name</td>
-							<td class="tblInputShort">
-								<p:inputText id="#{studentBean.name}" />
-							</td>
-						</tr>
-						<tr>
-							<td class="tblLabel">Class Name</td>
-							<td class="tblInputNormal" colspan="3">
-								<p:inputText id="#{studentBean.className}" />
-							</td>
-						</tr>
-					</table>
-					<p:commandButton value="Search" action="#{studentBean.search()}"
-							update="display" icon="ui-icon-check" />
+							<tr>
+								<td class="tblLabel">Student No.</td>
+								<td class="tblInputShort">
+									<p:inputText id="id" value="#{studentBean.id}" />
+								</td>
+								<td class="tblLabel">Student Name</td>
+								<td class="tblInputShort">
+									<p:inputText id="name" value="#{studentBean.name}" />
+								</td>
+							</tr>
+								<tr>
+									<td class="tblLabel">Class Name</td>
+									<td class="tblInputNormal" colspan="3">
+										<p:inputText id="className" value="#{studentBean.className}" />
+									</td>
+								</tr>
+						</table>
+						<br /> 
+						<p:commandButton value="Search" action="#{studentBean.Select()}" update="display" icon="ui-icon-check" />
+						<h:outputText id="display" />
 				</h:form>
+				<p:dataTable var="student" value="#{studentBean.Select()}">
+				    
+			        <p:column filterBy="#{student.id}" headerText="Id" filterMatchMode="contains">
+			            <h:outputText value="#{student.id}" />
+			        </p:column>
+			        
+			        <p:column filterBy="#{student.name}" headerText="Student Name" filterMatchMode="contains">
+			            <h:outputText value="#{student.name}" />
+			        </p:column>
+				 	
+				 	<p:column filterBy="#{student.registerDate}" headerText="Register Date" filterMatchMode="contains">
+			            <h:outputText value="#{student.registerDate}" />
+			        </p:column>
+				 	
+				 	<p:column filterBy="#{student.className}" headerText="Class Name" filterMatchMode="contains">
+			            <h:outputText value="#{student.className}" />
+			        </p:column>
+			        
+			        <p:column filterBy="#{student.status}" headerText="Status" filterMatchMode="contains">
+			        	<f:facet name="filter">
+			        		<p:selectOneMenu id="status" style="width:100px">
+								<f:selectItem itemValue="#{null}" itemLabel="" />
+								<f:selectItem itemLabel="Attending" itemValue="Attending" />
+								<f:selectItem itemLabel="Passed" itemValue="Passed" />
+								<f:selectItem itemLabel="Failed" itemValue="Failed" />
+							</p:selectOneMenu>
+			        	</f:facet>
+			            <h:outputText value="#{student.status}" />
+			        </p:column>
+
+			        
+				</p:dataTable>
 			</div>
-			<h:form>
-
-			</h:form> -->
-
 		</ui:define>
 
 	</ui:composition>
