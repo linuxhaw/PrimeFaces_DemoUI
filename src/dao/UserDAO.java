@@ -9,6 +9,8 @@ import java.util.List;
 
 import dto.UserDTO;
 
+import model.UserBean;
+
 
 public class UserDAO {
 	public static Connection con = null;
@@ -97,5 +99,6 @@ public class UserDAO {
 		}
 		return dto;
 	}
+
 
 }

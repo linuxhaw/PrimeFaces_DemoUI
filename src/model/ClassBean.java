@@ -65,5 +65,19 @@ public class ClassBean {
 
 		}
 	}
+	public List<ClassDTO> classList(){
+		
+		List<ClassDTO> list=dao.selectAll();
+		return list;
+	}
+	
+	/*public void delete(String cid) {
+		ClassDTO dto=new ClassDTO();
+		dto.setId(cid);
+		dao.delete(dto);
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "Save!", "Successfully Deleted!."));
+	}
+	*/
 
 }

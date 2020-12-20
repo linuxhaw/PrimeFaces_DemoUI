@@ -2,78 +2,75 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1 -
 /DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<!-- <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"> -->
+	 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Insert title here</title>
 </h:head>
 <h:body>
 	<ui:composition template="templates/template.xhtml">
 		<ui:define name="content">
-
 			<h:form>
-				<div>
+
+					<p:messages id="messages" showDetail="true" closable="true">
+						<p:autoUpdate />
+					</p:messages>
+
+					<input type="hidden" value="#{editStudent.id}" />
 					<h3>Student Register</h3>
-					<label id="errormsg">  </label> <label style="color: blue;"></label>
-					<br />
-					<br />
-					<br />
-					<form action="StudentRegisterServlet" method="post">
-						<table class="tableForm">
-							<tr>
-								<td class="tblSingleLabel">Student No *</td>
-								<td class="tblSingleLabel">0001</td>
-							</tr>
-							
-							<tr>
-								<td class="tblSingleLabel">Student Name *</td>
-								<td class="tblSingleInput">
-									<p:inputText />
-								</td>
-							</tr>
-							
-							<tr>
-								<td class="tblSingleLabel">Class Name *</td>
-								<td class="tblSingleInput">
-									<p:selectOneMenu id="country" value="#{dropdownView.country}" style="width:150px">
-										
-									</p:selectOneMenu>
-								</td>
-							</tr>
-							
-							<tr>
-								<td class="tblSingleLabel">Registered Date *</td>
-								<td class="tblSingleInput">
-									<p:selectOneMenu id="year" value="#{dropdownView.year}" style="width:90px">
-										
-									</p:selectOneMenu>
-									
-									<p:selectOneMenu id="month" value="#{dropdownView.month}" style="width:50px">
-										
-									</p:selectOneMenu>
-									<p:selectOneMenu id="day" value="#{dropdownView.day}" style="width:50px">
-										
-									</p:selectOneMenu>
-									
-								</td>
-							</tr>
-							<tr>
-								<td class="tblSingleLabel">Status *</td>
-								<td class="tblSingleInput">
-									<p:selectOneMenu id="status" value="#{dropdownView.status}" style="width:100px">
-										
-									</p:selectOneMenu>
-								</td>
-							</tr>
-						</table>
-						<br/>
-						<p:commandButton value="Register" id="ajax" action="#{buttonView.buttonAction}" style="margin-right:20px;" styleClass="ui-priority-primary" />
-					</form>
-				</div>
-			</h:form>
+					<h:panelGrid columns="2" cellpadding="5">
+
+						<h:outputLabel for="id" value="Student ID:" />
+						<h:outputLabel for="id" value="#{editStudent.id}"/>
+
+						<h:outputLabel for="name" value="Student Name:" />
+						<p:inputText id="name" value="#{editStudent.name}" required="true" requiredMessage="Name must not be empty!"/>
+
+						<h:outputLabel for="className" value="ClassName:" />
+						<p:selectOneMenu id="className" value="#{editStudent.className}" style="width:150px" required="true" requiredMessage="Select a Class">
+										<f:selectItem itemValue="#{null}" itemLabel="Select one" />
+										<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+										<f:selectItem itemLabel="PS4" itemValue="PS4" />
+										<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+						</p:selectOneMenu>
+
+
+						<h:outputLabel for="registerDate" value="RegisterDate:" />
+						<p:datePicker id="registerDate" value="#{editStudent.registerDate}" readonlyInput="true" pattern="yyyy-MM-dd" required="true" requiredMessage="Date must not be empty"/>
+
+						<h:outputLabel for="status" value="Status *:" />
+							<p:selectOneMenu id="status" value="#{editStudent.status}" style="width:100px" required="true" requiredMessage="Select Status">
+								<f:selectItem itemValue="#{null}" itemLabel="Select one" />
+								<f:selectItem itemLabel="Attending" itemValue="Attending" />
+								<f:selectItem itemLabel="Passed" itemValue="Passed" />
+								<f:selectItem itemLabel="Failed" itemValue="Failed" />
+							</p:selectOneMenu>
+							<p:commandButton value="Update" action="#{studentBean.update(editStudent)}"  icon="pi pi-pencil" />
+
+							<p:commandButton value="Delete" action="#{studentBean.delete(editStudent)}">
+							 	<p:confirm header="Confirmation" message="Are you sure want to delete?" icon="pi pi-exclamation-triangle" />
+							 </p:commandButton>
+
+							 <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+						        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+						        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+						    </p:confirmDialog>
+
+
+					</h:panelGrid>
+
+				</h:form>
 
 		</ui:define>
 

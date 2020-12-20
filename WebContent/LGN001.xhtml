@@ -17,7 +17,9 @@
 <h:body>
 	<ui:composition template="/templates/welcomeTemplate.xhtml">
 		<ui:define name="content">
-
+			<p:messages id="messages" showDetail="true" closable="true">
+				<p:autoUpdate />
+			</p:messages>
 			<h:form style="padding-top:8%;">
 				<table id="login_table">
 					<tr>
@@ -27,9 +29,9 @@
 					<tr>
 					<td>UserName</td>
 					<td>
-					<span class="ui-float-label"> <p:inputText
-									id="float-input" value="#{basicView.text}" /> <p:outputLabel
-									for="@previous" value="Username" />
+						<span class="ui-float-label">
+							<p:inputText id="float-input" value="#{userBean.id}" />
+							<p:outputLabel for="@previous" value="Username" />
 						</span>
 					</td>
 					</tr>
@@ -38,14 +40,14 @@
 						<td> User Password</td>
 
 						<td><span class="ui-float-label"> <p:password
-									id="nonFeedback" value="#{passwordView.password1}" /> <p:outputLabel
+									id="nonFeedback" value="#{userBean.password}" /> <p:outputLabel
 									for="@previous" value="Password" />
 						</span></td>
 					</tr>
 
 					<tr>
 						<td colspan="2" style="padding-top:50px;"><p:growl id="growl" life="2000" /> 
-						<p:commandButton style="width:200px;"	value="Login" id="ajax" update="growl" action="#{buttonView.buttonAction}" styleClass="ui-priority-primary" />
+						<p:commandButton style="width:200px;"	value="Login" id="ajax" update="growl" action="#{userBean.login(userBean,request)}" styleClass="ui-priority-primary" />
 						</td>
 					</tr>
 

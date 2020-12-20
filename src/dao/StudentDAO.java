@@ -11,10 +11,11 @@ import java.util.Date;
 import java.util.List;
 
 import dto.StudentDTO;
+import dto.UserDTO;
 import model.StudentBean;
 
 public class StudentDAO {
-	public static Connection con = null;
+	static Connection con = null;
 	static {
 		con = MyConnection.getConnection();
 	}
@@ -84,5 +85,69 @@ public class StudentDAO {
 			return null;
 		}
 		return list;
+	}
+	/*public int updateData(StudentDTO dto) {
+		int result = 0;
+		//String sql = "update student set student_name=?,class_name=?,register_date=?,status=? where student_id=?";
+		String sql = "update student set student_name=?,class_name=?,register_date=?,status=? where student_id=?";
+		try {
+			System.out.println(dto.getStudentName());
+			System.out.println(dto.getClassName());
+			System.out.println(dto.getRegisterDate());
+			System.out.println(dto.getStatus());
+			System.out.println(dto.getStudentId());
+			
+			PreparedStatement ps = con.prepareStatement(sql);
+			System.out.println("1");
+			ps.setString(1, dto.getStudentName());
+			ps.setString(2, dto.getClassName());
+			ps.setString(3, dto.getRegisterDate());
+			ps.setString(4, dto.getStatus());
+			ps.setString(5, dto.getStudentId());
+			System.out.println(2);
+			
+			result = ps.executeUpdate();
+			System.out.println(3);
+		} catch (SQLException e) {
+			System.out.println("Database error");
+		}
+		return result;
+	}*/
+	
+		public int update(StudentDTO dto) {
+		int result = 0;
+		String sql = "update student set student_name=?,class_name=?,register_date=?,status=? where student_id=?";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, dto.getStudentName());
+			ps.setString(2, dto.getClassName());
+			ps.setString(3, dto.getRegisterDate());
+			ps.setString(4, dto.getStatus());
+			ps.setString(5, dto.getStudentId());
+			System.out.println( dto.getStudentName());
+			System.out.println(dto.getClassName());
+			System.out.println(dto.getRegisterDate());
+			System.out.println(dto.getStatus());
+			System.out.println(dto.getStudentId());
+			result = ps.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("Database error");
+		}
+		return result;
+	}
+	
+	public int deleteData(StudentDTO dto) {
+		int result = 0;
+		System.out.println("delete");
+		String sql = "delete from student where student_id=?";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, dto.getStudentId());
+			result = ps.executeUpdate();
+			result=1;
+		} catch (SQLException e) {
+			System.out.println("Database error");
+		}
+		return result;
 	}
 }
