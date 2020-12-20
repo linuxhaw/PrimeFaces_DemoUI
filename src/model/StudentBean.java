@@ -5,12 +5,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
+
 
 import dao.ClassDAO;
 import dao.StudentDAO;
@@ -79,10 +79,6 @@ public class StudentBean {
 	}
 	
 	public String save() {
-		if (id==null) {
-			System.out.println(id);
-			return"";
-		}
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");		
 		
 		StudentDTO dto = new StudentDTO();
@@ -125,9 +121,6 @@ public class StudentBean {
 		System.out.println(list.size());
 		//ClassDTO dto = new ClassDTO();
 		return list;
-		
-		
-		
 	}
 	
 }

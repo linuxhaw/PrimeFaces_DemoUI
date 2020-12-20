@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1 -
+/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Insert title here</title>
+</h:head>
+<h:body>
+	<ui:composition template="templates/template.xhtml">
+		<ui:define name="content">
+			<h3>User Search Page</h3>
+			<div class="search_form">
+				<p:messages id="messages" showDetail="true" closable="true">
+					<p:autoUpdate />
+				</p:messages>
+				<h:form id="form">
+					<p:dataTable id="refresh" var="user" emptyMessage="No data found!" widgetVar="mainVar" value="#{userBean.userList()}" style="width:1000px; height:100%; ">
+
+						<p:column filterBy="#{user.id}" headerText="Id" immediate="true" filterMatchMode="contains" style="width:250px;padding-left:18px;text-align:center;">
+							<h:outputText value="#{user.id}" />
+						</p:column>
+
+						<p:column filterBy="#{user.name}" headerText="Name" immediate="true" filterMatchMode="contains" style="width:250px;padding-left:18px;text-align:center;">
+							<h:outputText value="#{user.name}" />
+						</p:column>
+
+
+						<p:column headerText="Actions" style="width:200px; text-align:center;">
+							<p:commandButton action="#{userBean.edit(user.id)}" value="Update" icon="pi pi-pencil" update=":form:refresh" immediate="true" oncomplete="mainVar.filter()">
+								<p:autoUpdate />
+								<f:event type="preRenderView" listener="#{userBean.userList()}" />
+							</p:commandButton>
+							<p:commandButton actionListener="#{userBean.delete(user.id)}" immediate="true" value="Delete" update=":form:refresh" icon="pi pi-trash"></p:commandButton>
+
+						</p:column>
+
+
+
+					</p:dataTable>
+				</h:form>
+			</div>
+		</ui:define>
+
+	</ui:composition>
+</h:body>
+</html>

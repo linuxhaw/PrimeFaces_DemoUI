@@ -9,6 +9,7 @@ import java.util.List;
 
 import dto.UserDTO;
 
+
 public class UserDAO {
 	public static Connection con = null;
 	static {
@@ -60,31 +61,41 @@ public class UserDAO {
 	}
 	
 	
-	public List<UserDTO> select(UserDTO dto) {
-		List<UserDTO> list = new ArrayList<UserDTO>();
+	public UserDTO select(UserDTO dto) {
 
 		try {
-			PreparedStatement ps = con.prepareStatement("select * from user");
-			if (!dto.getId().equals("")) {
-				ps = con.prepareStatement("select * from user where id=?");
-				ps.setString(1, dto.getId());
-			} else if (!dto.getName().equals("")) {
-				ps = con.prepareStatement("select * from user where name=?");
-				ps.setString(1, dto.getName());
-			}
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				UserDTO res = new UserDTO();
-				res.setId(rs.getString("id"));
-				res.setName(rs.getString("name"));
-				res.setPassword(rs.getString("password"));
-				list.add(res);
-			}
+			PreparedStatement p=con.prepareStatement("select * from user where id=? or name=?");
+			p.setString(1,dto.getId());
+		p.setString(2, dto.getName());
+		ResultSet rs=p.executeQuery();
+		while(rs.next()) {
+			dto.setId(rs.getString("id"));
+			dto.setName(rs.getString("name"));
+			dto.setPassword(rs.getString("password"));
+		}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return list;
+		return dto;
+	}
+	public List<UserDTO> selectAll(){
+		List<UserDTO> dto=new ArrayList<UserDTO>();
+		try {
+			PreparedStatement p=con.prepareStatement("select * from user ");
+			ResultSet rs=p.executeQuery();
+			while(rs.next()) {
+				UserDTO res=new UserDTO();
+			res.setId(rs.getString("id"));
+			res.setName(rs.getString("name"));
+	res.setPassword(rs.getString("password"));
+
+		dto.add(res);
+			}
+		}catch(SQLException e) {
+			System.out.println("DataBase ERROR!");
+		}
+		return dto;
 	}
 
 }

@@ -12,16 +12,16 @@ xmlns:p="http://primefaces.org/ui">
 <h:body>  
 <h:form style="padding-top:85px ;width:18px;">	
 
-    <p:menu toggleable="true" style="backgroud-color:red;width:1500%;height:500px;">
-        <p:submenu label="Class Management" style="background-color:limegreen; border-radius:5px 5px 5px 5px;" >
+    <p:menu toggleable="true" style="backgroud-color:red;width:1500%;height:700px;">
+        <p:submenu label="Class Management" style="background-color:limegreen; border-radius:5px 5px 5px 5px; margin-top:15px; " >
             <p:menuitem style="background-color:skyblue; border-radius:5px 5px 5px 5px;" value="Add Class" action="BUD003.xhtml?faces-redirect=true"  icon="pi pi-save" />
             <p:menuitem style="background-color:skyblue; border-radius:5px 5px 5px 5px;"  value="Search Class" action="#{menuView.update}"  icon="pi pi-refresh"/>
         </p:submenu>
-        <p:submenu label="Student Management" style="background-color:limegreen; border-radius:5px 5px 5px 5px;">
+        <p:submenu label="Student Management" style="background-color:limegreen; border-radius:5px 5px 5px 5px;  margin-top:15px; ">
             <p:menuitem style="background-color:skyblue; border-radius:5px 5px 5px 5px;" value="Add Student" action="BUD002.xhtml?faces-redirect=true" ajax="false" icon="pi pi-times"/>
             <p:menuitem style="background-color:skyblue; border-radius:5px 5px 5px 5px;" value="Search Student" action="BUD001.xhtml?faces-redirect=true"  ajax="false" icon="pi pi-times"/>
         </p:submenu>
-        <p:submenu label="User Management" style="background-color:limegreen; border-radius:5px 5px 5px 5px;">
+        <p:submenu label="User Management" style="background-color:limegreen; border-radius:5px 5px 5px 5px;  margin-top:15px; ">
             <p:menuitem style="background-color:skyblue; border-radius:5px 5px 5px 5px;" value="Add User" action="USR002.xhtml?faces-redirect=true" icon="pi pi-home"/>
             <p:menuitem style="background-color:skyblue; border-radius:5px 5px 5px 5px;" value="Search User" action="USR001.xhtml?faces-redirect=true" icon="pi pi-home"/>
         </p:submenu>

@@ -20,37 +20,39 @@
 				<p:messages id="messages" showDetail="true" closable="true">
 					<p:autoUpdate />
 				</p:messages>
-
+				<!--  <p:message for="save"  showDetail="true" closable="true"><p:autoUpdate /></p:message>-->
 
 				<h3>User Register</h3>
 				<h:panelGrid columns="3" cellpadding="5">
 
 					<h:outputLabel for="id" value="User ID:" />
-					<p:inputText id="id" value="#{userBean.id}" required="true"
-						requiredMessage="ID must not be empty!" />
+					<p:inputText id="id" value="#{editUser.id}" readonly="true"
+						required="true" requiredMessage="ID must not be empty!" />
 					<p:message for="id" style="color:red;"></p:message>
 					<h:outputLabel for="name" value="User Name:" />
-					<p:inputText id="name" value="#{userBean.name}" required="true"
+					<p:inputText id="name" value="#{editUser.name}" required="true"
 						requiredMessage="Name must not be empty!" />
-					<p:message for="name	" style="color:red;"></p:message>
+					<p:message for="name" style="color:red;"></p:message>
 
 					<h:outputLabel for="password" value="Password:" />
 					<p:password id="password" feedback="false" match="confirm"
-						label="'Password'" value="#{userBean.password}" required="true"
-						requiredMessage="Password must not be empty!" />
+						label="'Password'" value="#{editUser.password}" required="true"
+						requiredMessage="Password must not be empty!" redisplay="true">
+					</p:password>
 					<p:message for="password" style="color:red;"></p:message>
 
 					<h:outputLabel for="confirm" value="Confirm Password:" />
 					<p:password id="confirm" feedback="false"
-						label="'Confirm Password'" value="#{userBean.confirm}"
-						required="true"
+						label="'Confirm Password'" redisplay="true"
+						value="#{editUser.confirm}" required="true"
 						requiredMessage="Confirm Password must not be empty!" />
 					<p:message for="confirm" style="color:red;"></p:message>
 
 
 
-					<p:commandButton value="Register"
-						actionListener="#{userBean.save()}" icon="pi pi-plus"></p:commandButton>
+					<p:commandButton value="Update" id="save"
+						actionListener="#{userBean.update(editUser)}" icon="pi pi-pencil"></p:commandButton>
+
 				</h:panelGrid>
 
 			</h:form>
