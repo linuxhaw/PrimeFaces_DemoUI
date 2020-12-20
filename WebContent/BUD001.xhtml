@@ -19,35 +19,16 @@
 			</p:messages>
 			<h3>Student Search Page</h3>
 			<div class="search_form">
-				<h:form>
-					<table class="tableForm">
-							<tr>
-								<td class="tblLabel">Student No.</td>
-								<td class="tblInputShort">
-									<p:inputText id="id" value="#{studentBean.id}" />
-								</td>
-								<td class="tblLabel">Student Name</td>
-								<td class="tblInputShort">
-									<p:inputText id="name" value="#{studentBean.name}" />
-								</td>
-							</tr>
-								<tr>
-									<td class="tblLabel">Class Name</td>
-									<td class="tblInputNormal" colspan="3">
-										<p:inputText id="className" value="#{studentBean.className}" />
-									</td>
-								</tr>
-						</table>
-						<br /> 
-						<p:commandButton value="Search" action="#{studentBean.Select()}" update="display" icon="ui-icon-check" />
-						<h:outputText id="display" />
-				</h:form>
-				<p:dataTable var="student" value="#{studentBean.Select()}" rows="10">
+				
+				<p:dataTable id="refresh" var="student" value="#{studentBean.Select()}" rows="10">
 				    <!-- <p:column filterBy="#{car.id}" headerText="Id"  filterMatchMode="contains" id="clm">
   						<h:outputText value="#{car.id}" />
 					</p:column> -->
-			        <p:column filterBy="#{student.id}" headerText="Id" filterMatchMode="contains">
+			        <!-- <p:column filterBy="#{student.id}" headerText="Id" filterMatchMode="contains">
 			            <h:outputText value="#{student.id}" />
+			        </p:column> -->
+			         <p:column filterBy="#{student.id}" headerText="Id" filterMatchMode="contains" style="width:25%;padding-left:18px;">
+			            <h:outputText  value="#{student.id}" />
 			        </p:column>
 			        
 			        <p:column filterBy="#{student.name}" headerText="Student Name" filterMatchMode="contains">

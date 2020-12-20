@@ -31,14 +31,14 @@
 					<h3>Student Register</h3>
 					<h:panelGrid columns="2" cellpadding="5">
 						
-						<h:outputLabel for="id" value="ClassID:" />
-						<h:outputLabel for="id" value="#{editStudent.id}" />
+						<h:outputLabel for="id" value="Student ID:" />
+						<h:outputLabel for="id" value="#{editStudent.id}"/>
 
-						<h:outputLabel for="name" value="ClassName:" />
-						<p:inputText id="name" value="#{editStudent.name}" />
+						<h:outputLabel for="name" value="Student Name:" />
+						<p:inputText id="name" value="#{editStudent.name}" required="true" requiredMessage="Name must not be empty!"/>
 						
 						<h:outputLabel for="className" value="ClassName:" />	
-						<p:selectOneMenu id="className" value="#{editStudent.className}" style="width:150px">
+						<p:selectOneMenu id="className" value="#{editStudent.className}" style="width:150px" required="true" requiredMessage="Select a Class">
 										<f:selectItem itemValue="#{null}" itemLabel="Select one" />
 										<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
 										<f:selectItem itemLabel="PS4" itemValue="PS4" />
@@ -47,10 +47,10 @@
 
 						
 						<h:outputLabel for="registerDate" value="RegisterDate:" />
-						<p:datePicker id="registerDate" value="#{editStudent.registerDate}" readonlyInput="true" pattern="yyyy-MM-dd"/>
+						<p:datePicker id="registerDate" value="#{editStudent.registerDate}" readonlyInput="true" pattern="yyyy-MM-dd" required="true" requiredMessage="Date must not be empty"/>
 						
 						<h:outputLabel for="status" value="Status *:" />
-							<p:selectOneMenu id="status" value="#{editStudent.status}" style="width:100px">
+							<p:selectOneMenu id="status" value="#{editStudent.status}" style="width:100px" required="true" requiredMessage="Select Status">
 								<f:selectItem itemValue="#{null}" itemLabel="Select one" />
 								<f:selectItem itemLabel="Attending" itemValue="Attending" />
 								<f:selectItem itemLabel="Passed" itemValue="Passed" />

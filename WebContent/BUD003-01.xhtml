@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1 -
+/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Insert title here</title>
+</h:head>
+<h:body>
+	<ui:composition template="templates/template.xhtml">
+		<ui:define name="content">
+			<h3>Class Search Page</h3>
+			
+			<div class="search_form">
+		<p:messages id="messages" showDetail="true" closable="true">
+					<p:autoUpdate />
+				</p:messages>
+			
+				<h:form id="form">
+				<p:dataTable id="refresh"  var="classname"  emptyMessage="No data found!" value="#{classBean.classList()}">
+				    
+			        <p:column filterBy="#{classname.id}" headerText="Id" filterMatchMode="contains" style="width:25%;padding-left:18px;">
+			            <h:outputText  value="#{classname.id}" />
+			        </p:column>
+			        
+			    <p:column filterBy="#{classname.name}" headerText="Name" filterMatchMode="contains" style="width:25%;padding-left:18px;">
+			            <h:outputText value="#{classname.name}" />
+			        </p:column>
+			       
+ 
+			    
+			        
+			        
+			        
+				</p:dataTable>
+					</h:form>
+			</div>
+		</ui:define>
+
+	</ui:composition>
+</h:body>
+</html>
