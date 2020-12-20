@@ -81,6 +81,47 @@ public class UserDAO {
 		}
 		return dto;
 	}
+	
+	public UserDTO selectOne(String id) {
+		UserDTO dto=new UserDTO();
+		try {
+			PreparedStatement p=con.prepareStatement("select * from user where id=?");
+			p.setString(1,id);
+			System.out.print(id);
+			ResultSet rs=p.executeQuery();
+			while(rs.next()) {
+				System.out.print(rs.getString(id));
+				dto.setId(rs.getString("id"));
+				dto.setName(rs.getString("name"));
+				dto.setPassword(rs.getString("password"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dto;
+	}
+	
+	public UserDTO selectLogin(String id) {
+		UserDTO dto=new UserDTO();
+		try {
+			PreparedStatement p=con.prepareStatement("select * from user where id=?");
+			p.setString(1,id);
+			System.out.print(id);
+			ResultSet rs=p.executeQuery();
+			while(rs.next()) {
+				System.out.print(rs.getString(id));
+				dto.setId(rs.getString("id"));
+				dto.setName(rs.getString("name"));
+				dto.setPassword(rs.getString("password"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dto;
+	}
+	
 	public List<UserDTO> selectAll(){
 		List<UserDTO> dto=new ArrayList<UserDTO>();
 		try {

@@ -1,18 +1,14 @@
 package model;
 
-
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
-
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-
-
-
+import javax.servlet.http.HttpServletRequest;
 
 import dao.UserDAO;
 import dto.UserDTO;
@@ -40,7 +36,6 @@ public class UserBean implements Serializable {
 	public void setUserFilterList(List<UserDTO> userFilterList) {
 		this.userFilterList = userFilterList;
 	}
-
 
 	private UserDAO dao = new UserDAO();
 	private Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
@@ -95,22 +90,22 @@ public class UserBean implements Serializable {
 		dto.setName(name);
 		dto.setPassword(password);
 
-		
-		if (dao.select(dto).getId()!=null) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Message!", "User Already Exist!"));
+		if (dao.selectOne(id).getId() != null) {
+			FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_WARN, "Message!", "User Already Exist!"));
 			return "USR002.xhtml?faces-redirect=true?";
-		} else {
-			int result = dao.insert(dto);
-
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Message!", "Successfully  Saved!"));
-
-			return "USR002.xhtml?faces-redirect=true";
+		} else
+		{
+			int res = dao.insert(dto);
+			if (res > 0) {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Successfully Saved!"));
+				return "";
+			}
 		}
+		return "";
 
 	}
 
 	public String edit(String code) {
-
 
 		UserDTO dto = new UserDTO();
 		dto.setId(code);
@@ -124,7 +119,6 @@ public class UserBean implements Serializable {
 		bean.setConfirm(one.getPassword());
 		sessionMap.put("editUser", bean);
 
-
 		return "USR002-01.xhtml?faces-redirect=true";
 
 	}
@@ -137,7 +131,6 @@ public class UserBean implements Serializable {
 		int result = dao.update(dto);
 		if (result != 0) {
 
-
 			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage(FacesMessage.SEVERITY_INFO, "Message!", "Successfully Updated!."));
 
@@ -147,8 +140,6 @@ public class UserBean implements Serializable {
 			return "USR002-01.xhtml?faces-redirect=true";
 		}
 	}
-
-
 
 	public void delete(String code) {
 		UserDTO dto = new UserDTO();
@@ -163,6 +154,27 @@ public class UserBean implements Serializable {
 	public void test() {
 		if (!FacesContext.getCurrentInstance().isPostback()) {
 			List<UserDTO> dto = dao.selectAll();
+		}
+
+	}
+
+	public String login(UserBean user) {
+		UserDTO u1 = new UserDTO();
+		u1 = dao.selectOne(user.getId());
+		System.out.print(user.getId());
+		System.out.print(u1.getId());
+		if (u1.getId() == null) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "Message!", "User Not found"));
+			return "";
+		}
+		if (u1.getPassword().equals(user.getPassword())) {
+			
+			return "index.xhtml?faces-redirect=true";
+		} else {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "Message!", "Password not correct"));
+			return "";
 		}
 
 	}

@@ -19,15 +19,9 @@
 			</p:messages>
 			<h3>Student Search Page</h3>
 			<div class="search_form">
-				
+					<h:form>
 				<p:dataTable id="refresh" var="student" value="#{studentBean.Select()}" rows="10">
-				    <!-- <p:column filterBy="#{car.id}" headerText="Id"  filterMatchMode="contains" id="clm">
-  						<h:outputText value="#{car.id}" />
-					</p:column> -->
-			        <!-- <p:column filterBy="#{student.id}" headerText="Id" filterMatchMode="contains">
-			            <h:outputText value="#{student.id}" />
-			        </p:column> -->
-			         <p:column filterBy="#{student.id}" headerText="Id" filterMatchMode="contains" style="width:25%;padding-left:18px;">
+				         <p:column filterBy="#{student.id}" headerText="Id" filterMatchMode="contains" style="width:25%;padding-left:18px;">
 			            <h:outputText  value="#{student.id}" />
 			        </p:column>
 			        
@@ -59,6 +53,7 @@
 
 			        
 				</p:dataTable>
+				</h:form>
 			</div>
 		</ui:define>
 

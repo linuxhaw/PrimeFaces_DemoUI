@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1 -
 /DTD/xhtml1-transitional.dtd">
 
-	 <html xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
@@ -19,49 +19,57 @@
 
 			<h:form>
 
-					<p:messages id="messages" showDetail="true" closable="true">
-						<p:autoUpdate />
-					</p:messages>
+				<p:messages id="messages" showDetail="true" closable="true">
+					<p:autoUpdate />
+				</p:messages>
 
 
-					<h3>Student Register</h3>
-					<h:panelGrid columns="2" cellpadding="5">
+				<h3>Student Register</h3>
+				<h:panelGrid columns="2" cellpadding="5">
 
-						<h:outputLabel for="id" value="Student ID:" />
-						<p:inputText id="id" value="#{studentBean.id}" required="true" requiredMessage="ID must not be empty!"/>
+					<h:outputLabel for="id" value="Student ID:" />
+					<p:inputText id="id" value="#{studentBean.id}" required="true"
+						requiredMessage="ID must not be empty!" />
 
-						<h:outputLabel for="name" value="Student Name:" />
-						<p:inputText id="name" value="#{studentBean.name}" required="true" requiredMessage="Name must not be empty!" />
+					<h:outputLabel for="name" value="Student Name:" />
+					<p:inputText id="name" value="#{studentBean.name}" required="true"
+						requiredMessage="Name must not be empty!" />
 
-						<h:outputLabel for="className" value="ClassName:" />
+					<h:outputLabel for="className" value="ClassName:" />
 
-            <p:selectOneMenu id="className" value="#{studentBean.className}" style="width:150px">
-            										<c:forEach var="list" items="#{studentBean.classlist()}">
+					<p:selectOneMenu id="className" value="#{studentBean.className}"
+						style="width:150px" required="true"
+						requiredMessage="Select a Class">
+						<f:selectItem itemValue="#{null}" itemLabel="Select one" />
+						<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+						<f:selectItem itemLabel="PS4" itemValue="PS4" />
+						<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+					</p:selectOneMenu>
 
-            									<f:selectItem itemValue="#{list.name}" itemLabel="#{list.name}"></f:selectItem>
-            										</c:forEach>
-            						</p:selectOneMenu>
 
 
 
 
+					<h:outputLabel for="registerDate" value="RegisterDate:" />
+					<p:datePicker id="registerDate" value="#{studentBean.registerDate}"
+						readonlyInput="true" pattern="yyyy-MM-dd" required="true"
+						requiredMessage="Date must not be empty" />
 
-						<h:outputLabel for="registerDate" value="RegisterDate:" />
-						<p:datePicker id="registerDate" value="#{studentBean.registerDate}" readonlyInput="true" pattern="yyyy-MM-dd" required="true" requiredMessage="Date must not be empty"/>
+					<h:outputLabel for="status" value="Status *:" />
+					<p:selectOneMenu id="status" value="#{studentBean.status}"
+						style="width:100px" required="true"
+						requiredMessage="Select Status">
+						<f:selectItem itemValue="#{null}" itemLabel="Select one" />
+						<f:selectItem itemLabel="Attending" itemValue="Attending" />
+						<f:selectItem itemLabel="Passed" itemValue="Passed" />
+						<f:selectItem itemLabel="Failed" itemValue="Failed" />
+					</p:selectOneMenu>
+					<p:commandButton value="Add" action="#{studentBean.save()}"
+						update="display" icon="ui-icon-check" />
+					<h:outputText id="display" />
+				</h:panelGrid>
 
-						<h:outputLabel for="status" value="Status *:" />
-							<p:selectOneMenu id="status" value="#{studentBean.status}" style="width:100px" required="true" requiredMessage="Select Status">
-								<f:selectItem itemValue="#{null}" itemLabel="Select one" />
-								<f:selectItem itemLabel="Attending" itemValue="Attending" />
-								<f:selectItem itemLabel="Passed" itemValue="Passed" />
-								<f:selectItem itemLabel="Failed" itemValue="Failed" />
-							</p:selectOneMenu>
-						<p:commandButton value="Add" action="#{studentBean.save()}"
-							update="display" icon="ui-icon-check" />
-						<h:outputText id="display" />
-					</h:panelGrid>
-
-				</h:form>
+			</h:form>
 
 		</ui:define>
 
@@ -70,9 +78,5 @@
 </html>
 
 
-<!---<p:selectOneMenu id="className" value="#{studentBean.className}" style="width:150px" required="true" requiredMessage="Select a Class">
-       <f:selectItem itemValue="#{null}" itemLabel="Select one" />
-       <f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-       <f:selectItem itemLabel="PS4" itemValue="PS4" />
-       <f:selectItem itemLabel="Wii U" itemValue="Wii U" />
-</p:selectOneMenu>---->
+
+
